@@ -1,0 +1,44 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Smith",
+    "date": "2025-02-17",
+    "rating": 5,
+    "review": "Great ambiance. Highly recommended!"
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "date": "2025-02-04",
+    "rating": 5,
+    "review": "Love the coffee! Great food. Would visit again!"
+  },
+  {
+    "firstName": "Alice",
+    "lastName": "Johnson",
+    "date": "2025-02-12",
+    "rating": 4,
+    "review": "Nice place to work. Wi-Fi is reliable, and the staff is friendly."
+  },
+  {
+    "firstName": "Bob",
+    "lastName": "Martin",
+    "date": "2025-02-15",
+    "rating": 4,
+    "review": "Good coffee and a quiet place to get some coding done. Could use more seating."
+  },
+  {
+    "firstName": "Charlie",
+    "lastName": "Brown",
+    "date": "2025-02-10",
+    "rating": 5,
+    "review": "The best place to unwind after a long day of coding. The pastries are delicious!"
+  },
+  {
+    "firstName": "Dana",
+    "lastName": "White",
+    "date": "2025-02-14",
+    "rating": 3,
+    "review": "Decent place, but the prices are a bit high. Still, a good spot to focus on work."
+  }
+]

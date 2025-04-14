@@ -1,0 +1,114 @@
+[
+  {
+    "itemId": 0,
+    "itemCategory": "drink",
+    "itemName": "Coffee",
+    "itemDesc": "Our finest blend of Columbian and Arabica coffee.",
+    "itemPrice": 1.99,
+    "itemImage": "../images/coffee.jpg"
+  },
+  {
+    "itemId": 1,
+    "itemCategory": "drink",
+    "itemName": "Mocaccino",
+    "itemDesc": "A tasty combination of our finest coffee, with delicious cacao.",
+    "itemPrice": 2.99,
+    "itemImage": "../images/Mocha.jpg"
+  },
+  {
+    "itemId": 2,
+    "itemCategory": "drink",
+    "itemName": "Espresso",
+    "itemDesc": "A strong and bold shot of pure coffee.",
+    "itemPrice": 1.99,
+    "itemImage": "../images/espresso.jpg"
+  },
+  {
+    "itemId": 3,
+    "itemCategory": "drink",
+    "itemName": "Orange Pekoe Tea",
+    "itemDesc": "A rich and smooth black tea with subtle citrus notes.",
+    "itemPrice": 1.49,
+    "itemImage": "../images/orange.jpg"
+  },
+  {
+    "itemId": 4,
+    "itemCategory": "drink",
+    "itemName": "Chai Latte",
+    "itemDesc": "A warming blend of spiced tea and creamy milk.",
+    "itemPrice": 2.99,
+    "itemImage": "../images/ChaiLatte.jpg"
+  },
+  {
+    "itemId": 5,
+    "itemCategory": "drink",
+    "itemName": "Earl Grey Tea",
+    "itemDesc": "A fragrant black tea with a hint of bergamot.",
+    "itemPrice": 1.99,
+    "itemImage": "../images/grey.jpg"
+  },
+  {
+    "itemId": 6,
+    "itemCategory": "pastry",
+    "itemName": "Croissant",
+    "itemDesc": "A flaky, buttery pastry that pairs perfectly with your coffee.",
+    "itemPrice": 2.49,
+    "itemImage": "../images/Croissant.jpg"
+  },
+  {
+    "itemId": 7,
+    "itemCategory": "pastry",
+    "itemName": "Chocolate Chip Cookie",
+    "itemDesc": "Freshly baked with a perfect balance of chocolate and sweetness.",
+    "itemPrice": 1.99,
+    "itemImage": "../images/ChocolateChipCookie.jpg"
+  },
+  {
+    "itemId": 8,
+    "itemCategory": "side",
+    "itemName": "Granola Bar",
+    "itemDesc": "A healthy and crunchy snack, packed with oats and honey.",
+    "itemPrice": 1.99,
+    "itemImage": "../images/GranolaBar.jpg"
+  },
+  {
+    "itemId": 9,
+    "itemCategory": "side",
+    "itemName": "Avocado Toast",
+    "itemDesc": "A slice of toasted bread topped with creamy avocado and seasonings.",
+    "itemPrice": 3.99,
+    "itemImage": "../images/AvocadoToast.jpg"
+  },
+  {
+    "itemId": 10,
+    "itemCategory": "pastry",
+    "itemName": "Bagel with Cream Cheese",
+    "itemDesc": "A toasted bagel spread with smooth cream cheese.",
+    "itemPrice": 2.49,
+    "itemImage": "../images/bagel.jpg"
+  },
+  {
+    "itemId": 11,
+    "itemCategory": "pastry",
+    "itemName": "Muffin",
+    "itemDesc": "A moist, delicious muffin, perfect for a quick snack.",
+    "itemPrice": 2.49,
+    "itemImage": "../images/Muffin.jpg"
+  },
+  {
+    "itemId": 12,
+    "itemCategory": "salad",
+    "itemName": "Garden Salad",
+    "itemDesc": "Our classic vegan salad, topped with vegan ranch sauce and vegan cheese",
+    "itemPrice": 6.99,
+    "itemImage": "../images/veggie_salad.jpg"
+  },
+  {
+    "itemId": 13,
+    "itemCategory": "salad",
+    "itemName": "Greek Salad",
+    "itemDesc": "Get a taste of the mediterranean with our delicious greek salad.",
+    "itemPrice": 8.49,
+    "itemImage": "../images/greek_salad.jpg"
+  }
+]
