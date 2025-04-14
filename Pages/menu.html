@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+    Description: Midterm Sprint - Code Brew Café
+    Authors:  Ashton Dennis,
+              Joseph Gallant,
+              Justin Greenslade
+    Dates:  February 17, 2025 - February 26, 2025
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../scripts/menu.js"></script>
+    <title>The Code Caf&eacute;</title>
+  </head>
+  <body>
+    <div id="pageContainer">
+      <header class="mainHeader">
+        <img src="../images/header.png" alt="Header Image" />
+      </header>
+      <nav class="mainNav">
+        <a href="../Pages/index.html"
+          ><img src="../images/Home.png" width="100" alt="Home"
+        /></a>
+        <a href="../Pages/menu.html" class="onPage"
+          ><img src="../images/Menu.png" width="100" alt="Menu" />
+        </a>
+
+        <div class="cart-container">
+          <a href="../Pages/order.html"
+            ><img src="../images/Cart.png" width="70" alt="Cart" />
+          </a>
+          <p id="cart-bubble"></p>
+        </div>
+      </nav>
+      <main>
+        <section id="menu-section">
+          <button id="drinkBtn" class="menuBtns" onclick="showDrink()">
+            &gt;Drinks_
+          </button>
+          <br />
+          <div id="drink" class="menu-category"></div>
+
+          <button id="pastryBtn" class="menuBtns" onclick="showPastry()">
+            &gt;Pastries_
+          </button>
+          <br />
+          <div id="pastry" class="menu-category"></div>
+          <button id="saladBtn" class="menuBtns" onclick="showSalad()">
+            &gt;Salads
+          </button>
+          <br />
+          <div id="salad" class="menu-category"></div>
+          <button id="sideBtn" class="menuBtns" onclick="showSide()">
+            &gt;Sides_
+          </button>
+          <div id="side" class="menu-category"></div>
+        </section>
+
+        <section class="socials">
+          <h2>Visit Our Socials</h2>
+
+          <a href="#" target="_blank"
+            ><img
+              src="../Images/CallUs.png"
+              width="90"
+              alt="Phone call us logo"
+          /></a>
+          <a href="#" target="_blank"
+            ><img src="../Images/facebook.png" width="90" alt="facebook Logo"
+          /></a>
+          <a href="#" target="_blank"
+            ><img src="../Images/instagram.png" width="90" alt="instagram Logo"
+          /></a>
+          <a href="#" target="_blank"
+            ><img src="../Images/youtube.png" width="90" alt="youtube Logo"
+          /></a>
+          <br /><br />
+          <a href="#Top" class="backtotop">Back To Top</a>
+        </section>
+      </main>
+
+      <footer>
+        &copy; 2025 The Code Brew Caf&eacute;. All rights reserved
+      </footer>
+    </div>
+  </body>
+</html>

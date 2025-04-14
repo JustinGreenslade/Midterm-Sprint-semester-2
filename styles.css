@@ -1,0 +1,844 @@
+/*
+  Description: Midterm Sprint - Code Brew Café
+  Authors:  Ashton Dennis,
+            Joseph Gallant,
+            Justin Greenslade
+  Dates:  February 17, 2025 - February 26, 2025
+*/
+/* Default page settings*/
+@font-face {
+  font-family: "DotGothic16";
+  src: url("Fonts/DotGothic16-Regular.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+/* Shared background-image gradient */
+body,
+form,
+footer,
+.menu-item,
+.order-item,
+#promo-code,
+.menuNav,
+.mainNav,
+#updateOrderBtn {
+  background-image: linear-gradient(to bottom right, #34251b, #654835);
+}
+/* main content backround transparent beans backround*/
+#pageContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 8px;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-image: url("./images/back.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+/* main headder image for each page*/
+.mainHeader img {
+  width: 100%;
+  border-radius: 8px;
+}
+/* main settings for all nav bars */
+.mainNav {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  align-items: center;
+  border: 4px solid rgba(0, 0, 0, 0.425);
+  height: 100px;
+  text-align: center;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 50px;
+  position: sticky;
+  top: 16px;
+  z-index: 1000; /* Ensure it stays above other content */
+}
+/* controls all nav bar links */
+.mainNav a {
+  padding: 8px;
+  float: left;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+
+.menuNav a:hover,
+.mainNav a:hover {
+  transform: scale(1.1);
+}
+/* contrains car link and bubble for quanitiy */
+.cart-container {
+  position: relative;
+}
+/* catains amount of items in cart*/
+#cart-bubble {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  background-color: rgba(252, 63, 63, 0.802);
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  /* Change this to visible to view and hidden to make invisable if items less then 1  */
+  visibility: visible;
+}
+/* highlights what page you on in nav*/
+.onPage {
+  background-color: rgba(255, 255, 255, 0.199);
+  width: 150px;
+}
+.onPageCart {
+  background-color: rgba(255, 255, 255, 0.199);
+}
+
+/* creates a base box for contains on home page*/
+.aboutUs,
+.visitUs,
+.bio-item,
+.socials {
+  background-color: rgba(245, 245, 220, 0.631);
+  border-radius: 10px;
+  border: 2px solid rgb(244, 244, 222);
+  padding: 20px;
+  margin: auto;
+  margin-top: 30px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  text-align: center;
+}
+/* contain bio image*/
+.bio-item img {
+  margin: auto;
+  border: 4px solid beige;
+  width: 40%;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  object-fit: cover;
+  border-radius: 10px;
+}
+/* custom bio text to look differnt from other boxs*/
+.bio-description {
+  font-size: 1.4rem;
+  color: rgb(0, 0, 0);
+  margin: auto;
+  width: 50%;
+  line-height: 1.7rem;
+}
+/* matchs h2s across pages */
+.aboutUs h2,
+.visitUs h2,
+.bio-name,
+.bio-item h2,
+.reviewBox h2,
+.socials h2,
+.reviewBox h2 {
+  color: black;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+/* controls text in boxs except for bio*/
+.aboutUs p,
+.visitUs p {
+  color: black;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+}
+/* adjusts base default width*/
+.aboutUs,
+.visitUs,
+.reviewBox,
+.bio-item,
+.socials {
+  width: 65%;
+}
+/* bolds spaned text*/
+.bold {
+  font-weight: 700;
+}
+/* contains slideshow of reviews */
+.reviewBox {
+  justify-content: center;
+  margin: auto;
+  margin-top: 30px;
+  padding-top: 20px;
+  background-color: rgba(245, 245, 220, 0.631);
+  border-radius: 8px;
+  border: 2px solid rgb(244, 244, 222);
+  height: 400px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+}
+/*contains the slideshow of reviews*/
+#review-section {
+  display: flex;
+  margin: 30px;
+  justify-content: center;
+}
+/* designed review card holding the review info*/
+.review-card {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  border: 8px solid #654835;
+  background-color: rgba(245, 245, 220, 0.905);
+  padding: 10px;
+  margin: 15px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  text-align: center;
+  max-width: 400px;
+}
+/*custom style for name on review card*/
+.review-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+/*style of text for review given */
+.review-card p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+/* design of stars in review*/
+.review-card .star {
+  margin: auto;
+  color: rgb(5, 5, 5);
+  font-size: 1.3rem;
+}
+/* social media icons */
+.socials img {
+  display: inline-block;
+  padding-right: 16px;
+  transition: transform 0.3s ease;
+} /* hover affect scaling up social icons*/
+.socials img:hover {
+  transform: scale(1.2);
+}
+/* footer for all pages */
+footer {
+  padding: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  text-align: center;
+  border: 4px solid rgba(246, 246, 238, 0.631);
+  border-radius: 8px;
+  color: white;
+  width: 100%;
+  height: 50px;
+  font-size: 1.5rem;
+}
+/* back to top button for all pages */
+.backtotop:link,
+.backtotop:visited {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  margin: auto;
+  display: inline-block;
+  padding: 16px;
+  background-color: #463123;
+  color: #eae9e8;
+  border: 4px solid rgba(246, 246, 238, 0.631);
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+/* back to top button gover effect scaling up*/
+.backtotop:hover {
+  background-color: #463123f0;
+  color: #eae9e8;
+  transform: scale(1.1);
+}
+
+#drink .menu-item {
+  background-image: url("../images/drinkbackground.png");
+}
+
+#pastry .menu-item {
+  background-image: url("../images/leonid-portnoy-u5jwIlKvrSk-unsplash_cropped.png");
+}
+
+#salad .menu-item {
+  background-image: url("../images/salad.png");
+}
+
+#side .menu-item {
+  background-image: url("../images/sides.png");
+}
+
+/* item template to hold info picture price ect.*/
+.menu-item,
+.order-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1.5fr 1.5fr 1fr 1fr;
+  align-items: center;
+  margin: 20px;
+  color: white;
+  border: 2px solid rgb(216, 195, 179);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  width: 250px;
+  padding: 15px;
+  text-align: center;
+  position: relative; /* Position the overlay correctly */
+}
+/* contain image within menu-item/order-item */
+.menu-item img,
+.order-item img {
+  border: 1px solid beige;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+/* custom text inside item containers */
+.menu-item h3,
+.order-item h3 {
+  margin-bottom: 8px;
+  height: fit-content;
+}
+
+/* cart image  overlay showing only when an item is added to cart */
+.menu-item .overlay,
+.order-item .overlay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 216px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  display: flex;
+  visibility: hidden;
+}
+
+/* Only the layout is different from menu-item (base) */
+.order-item {
+  grid-template-rows: auto 2fr 1fr 2.5fr auto;
+}
+
+/* name of item in container*/
+.item-name {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 8px;
+  height: fit-content;
+}
+/* price of item in container*/
+.item-price {
+  color: white;
+  font-size: 1.2rem;
+  margin: 5px;
+  font-weight: bold;
+  height: fit-content;
+}
+/* description of item in container*/
+.item-description {
+  font-size: 1.2rem;
+  color: white;
+  margin: 8px;
+  height: fit-content;
+}
+/* custom menu button*/
+.menubutton {
+  margin: auto;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: #ccb7a7;
+  width: 100px;
+  height: 40px;
+  color: #463123;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  font-size: 1rem;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+  text-decoration: none;
+}
+/* hover effect on menu button to change colors */
+.menubutton:hover {
+  background-color: #463123;
+  color: #ccb7a7;
+}
+/* custom green checkmark when menu item is added to cart*/
+.menubuttonClicked {
+  margin: auto;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: #5aab5f;
+  width: 100px;
+  height: 40px;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  font-size: 1.25rem;
+  transition: transfrom 0.3s ease;
+  text-decoration: none;
+}
+/* custom update order button in cart*/
+#updateOrderBtn {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  padding: 16px;
+  font-size: 1.4rem;
+  color: white;
+  border: 2px solid #463123;
+  transition: border-color 0.2s ease-out, color 0.2s ease-out;
+  margin: 16px auto;
+  border-radius: 15px;
+}
+/* when hovered border changes color*/
+#updateOrderBtn:hover {
+  border: 2px solid #ccb7a7;
+}
+
+#promo-code {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  grid-template-columns: 1fr 1fr;
+  font-size: 1.2rem;
+  width: fit-content;
+  height: fit-content;
+  margin: 16px auto;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  color: white;
+  border: 2px solid rgb(216, 195, 179);
+  border-radius: 15px;
+  align-items: center;
+}
+
+#promo-code input {
+  height: fit-content;
+  padding: 5px;
+  background-color: #ccb7a7;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  width: 136px;
+}
+
+#promo-code input[type="text"] {
+  font-size: 1rem;
+  height: fit-content;
+  padding: 5px;
+  background-color: #ccb7a7;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+}
+
+#updateStatusText,
+#statusText {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgb(216, 195, 179);
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  width: fit-content;
+}
+
+#updateStatusText {
+  margin: 16px auto;
+  padding: 8px;
+  height: 38px;
+  border-radius: 10px;
+}
+
+#statusText {
+  grid-area: statusText;
+  padding: 16px;
+  column-count: 2;
+  min-height: 7em;
+  margin-left: 20px;
+  border-radius: 15px;
+}
+
+.success {
+  color: green;
+}
+
+.fail {
+  color: red;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  padding: 24px;
+  color: white;
+  border: 2px solid rgb(216, 195, 179);
+  border-radius: 15px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+}
+
+::placeholder {
+  color: #654835;
+}
+
+#orderForm #credit-card-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  opacity: 0; /* Default value */
+  transition: opacity 100ms ease-in-out;
+}
+
+#orderForm .form-element {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+#orderForm .radio-element {
+  display: grid;
+  align-items: center;
+  grid-template-areas:
+    "p p"
+    "radio-left radio-right";
+  border-top: 2px solid #ccb7a7;
+}
+
+.radio-element p {
+  grid-area: p;
+}
+
+#pickUpRdio,
+#cashPaymentRdio {
+  grid-area: radio-left;
+}
+
+#deliveryRdio,
+#creditPaymentRdio {
+  grid-area: radio-right;
+}
+
+#orderForm {
+  grid-area: orderForm;
+  margin: 20px;
+}
+
+#orderForm input[type="text"] {
+  font-size: 1rem;
+  height: fit-content;
+  padding: 5px;
+  background-color: #ccb7a7;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+}
+
+#orderForm input[type="radio"] {
+  margin-left: 8px;
+}
+
+#menu-section {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+#menu-section h2,
+#order-section h2 {
+  font-size: 1.6rem;
+}
+
+#order-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "h2 h2"
+    "orderForm order-receipt"
+    "statusText statusText";
+}
+
+#order-section h2 {
+  grid-area: h2;
+}
+
+.menu-category {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.quantity-element {
+  display: grid;
+  justify-items: center;
+  grid-template-areas: "label label label";
+  gap: 8px;
+}
+
+.quantity-element label {
+  grid-area: label;
+}
+
+.quantity-element button {
+  width: fit-content;
+  font-weight: bold;
+}
+
+.quantity-element input {
+  font-size: 2rem;
+  background-color: #654835;
+  text-align: center;
+  color: white;
+  width: 3rem;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+}
+
+#order-receipt {
+  height: 350px;
+  overflow: auto;
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 50%);
+  border: 2px solid rgb(216, 195, 179);
+  border-radius: 15px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+  grid-area: order-receipt;
+  margin: 20px;
+  min-width: 414px;
+}
+
+.aboutUs h2,
+.visitUs h2,
+.bio-item h2,
+.reviewBox h2,
+.socials h2 {
+  margin: auto;
+  margin-bottom: 20px;
+  font-family: DotGothic16;
+  text-align: center;
+  width: 98%;
+  background-color: rgba(255, 255, 255, 0.654);
+  padding: 10px;
+  border: 4px solid rgba(246, 246, 238, 0.631);
+  border-radius: 8px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+}
+
+#menu-section h2,
+#order-section h2 {
+  margin: auto;
+  margin-bottom: 20px;
+  font-family: DotGothic16;
+  text-align: center;
+  width: 98%;
+  background-color: rgba(255, 255, 255, 0.654);
+  padding: 10px;
+  border: 4px solid rgba(246, 246, 238, 0.631);
+  border-radius: 8px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+}
+
+table,
+th,
+td {
+  margin: auto;
+  border-collapse: collapse;
+  font-family: "DotGothic16";
+}
+
+.centertext {
+  text-align: center;
+}
+
+.righttable {
+  text-align: right;
+}
+
+.foot {
+  border-top: none;
+}
+
+#pastry,
+#salad,
+#side {
+  display: none;
+}
+
+.menuBtns {
+  margin: auto;
+  font-family: DotGothic16;
+  font-size: 1.6rem;
+  text-align: center;
+  width: 98%;
+  background-color: rgba(255, 255, 255, 0.654);
+
+  padding: 10px;
+  border: 4px solid rgba(246, 246, 238, 0.631);
+  border-radius: 8px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.732);
+}
+.menuBtns:hover {
+  background-color: rgba(255, 255, 255, 0.852);
+  color: black;
+  cursor: pointer;
+}
+
+/* 3 columns */
+@media only screen and (min-width: 931px) and (max-width: 1200px) {
+  .menu-category {
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+  }
+
+  .aboutUs,
+  .socials,
+  .visitUs,
+  .reviewBox,
+  .bio-item {
+    width: 80%;
+  }
+}
+
+/* 2 columns */
+@media only screen and (min-width: 636px) and (max-width: 930px) {
+  .menu-category {
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
+  }
+  .aboutUs,
+  .socials,
+  .visitUs,
+  .reviewBox,
+  .bio-item {
+    width: 85%;
+  }
+  .bio-description {
+    width: 80%;
+  }
+}
+
+/* 1 column */
+@media only screen and (max-width: 635px) {
+  .menu-category {
+    grid-template-columns: 1fr;
+    margin: auto;
+  }
+
+  .aboutUs,
+  .socials,
+  .visitUs,
+  .reviewBox,
+  .bio-item {
+    width: 90%;
+  }
+  .bio-description {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #order-section {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  #order-section h2,
+  #orderForm,
+  #order-receipt,
+  #statusText {
+    grid-area: unset;
+    margin: 20px auto;
+  }
+
+  #orderForm,
+  #statusText {
+    width: fit-content;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #pageContainer {
+    margin: auto;
+    justify-content: center;
+    gap: 8px;
+  }
+  /* main headder image for each page*/
+
+  .mainHeader img {
+    margin: auto;
+    border-radius: 8px;
+    scale: 80%;
+  }
+  .mainNav {
+    scale: 80%;
+  }
+  .mainNav img {
+    scale: 80%;
+  }
+  .aboutUs,
+  .visitUs,
+  .bio-item,
+  .reviewBox,
+  .socials,
+  footer {
+    scale: 80%;
+  }
+  footer {
+    font-size: 12pt;
+  }
+  .socials {
+    padding: 10px;
+  }
+  * {
+    font-size: 10pt;
+  }
+
+  .socials img {
+    scale: 75%;
+  }
+  .menuBtns {
+    scale: 80%;
+  }
+
+  /* item template to hold info picture price ect.*/
+  .menu-item,
+  .order-item {
+    scale: 100%;
+    margin: 8px;
+  }
+
+  #menu-section h2,
+  #order-section h2 {
+    width: 90%;
+    scale: 70%;
+  }
+
+  #orderForm,
+  #statusText,
+  #updateStatusText {
+    scale: 70%;
+  }
+
+  #order-receipt {
+    min-width: 200px;
+  }
+}
